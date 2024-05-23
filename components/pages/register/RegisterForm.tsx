@@ -13,7 +13,7 @@ export const RegisterForm = () => {
   } = form;
 
   return (
-    <form onSubmit={onRegister} className='mt-6 flex flex-col gap-4'>
+    <form onSubmit={onRegister} className='mt-10 flex flex-col gap-4'>
       <CustomInput
         error={errors.name?.message}
         placeholder='Name'
@@ -34,10 +34,10 @@ export const RegisterForm = () => {
 
       <PasswordInput
         error={errors.confirmPassword?.message}
-        placeholder='Password'
+        placeholder='Confirm Password'
         {...form.register('confirmPassword')}
       />
-      <Button>Register</Button>
+      <Button className='mt-6'>Register</Button>
     </form>
   );
 };
