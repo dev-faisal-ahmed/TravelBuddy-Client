@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { CustomInput } from '@/components/shared/form/CustomInput';
 
 export const RegisterForm = () => {
-  const { form, onRegister } = useRegister();
+  const { form, onRegister, loading } = useRegister();
 
   const {
     formState: { errors },
@@ -37,7 +37,9 @@ export const RegisterForm = () => {
         placeholder='Confirm Password'
         {...form.register('confirmPassword')}
       />
-      <Button className='mt-6'>Register</Button>
+      <Button disabled={loading} className='mt-6'>
+        Register
+      </Button>
     </form>
   );
 };

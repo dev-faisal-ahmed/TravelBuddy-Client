@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
+import { useState } from 'react';
 
 const registerFormSchema = z
   .object({
@@ -33,13 +34,17 @@ const registerFormSchema = z
 export type TRegisterFormFields = z.infer<typeof registerFormSchema>;
 
 export const useRegister = () => {
-  const router = useRouter();
   const form = useForm<TRegisterFormFields>({
     resolver: zodResolver(registerFormSchema),
   });
 
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
   const onRegister = form.handleSubmit(async (data) => {
+    const toastId = toast.loading('Creating a new account...!');
     try {
+      setLoading(true);
       const response = await registerAction(data);
       if (!response.ok) throw new Error(response.message);
 
@@ -48,8 +53,11 @@ export const useRegister = () => {
     } catch (err: any) {
       console.log(err);
       toast.error(err.message || 'something went wrong');
+    } finally {
+      setLoading(false);
+      toast.dismiss(toastId);
     }
   });
 
-  return { form, onRegister };
+  return { form, onRegister, loading };
 };

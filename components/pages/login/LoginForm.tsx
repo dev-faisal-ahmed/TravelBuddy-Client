@@ -6,7 +6,7 @@ import { CustomInput } from '@/components/shared/form/CustomInput';
 import { useLogin } from './useLogin';
 
 export const LoginForm = () => {
-  const { form, onLogin } = useLogin();
+  const { form, onLogin, loading } = useLogin();
 
   const {
     formState: { errors },
@@ -26,7 +26,9 @@ export const LoginForm = () => {
         {...form.register('password')}
       />
 
-      <Button className='mt-6'>Login</Button>
+      <Button disabled={loading} className='mt-6'>
+        Login
+      </Button>
     </form>
   );
 };
