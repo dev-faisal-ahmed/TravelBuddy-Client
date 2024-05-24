@@ -1,4 +1,5 @@
 import { API_KEY } from '../config';
+import { makeUrl } from '../utils/searchParamsHelper';
 
 export const SERVER_ADDRESS = 'http://localhost:5000/api/v1';
 
@@ -7,4 +8,6 @@ export const apiUrl = {
   register: `${SERVER_ADDRESS}/auth/register`,
   login: `${SERVER_ADDRESS}/auth/login`,
   addTrip: `${SERVER_ADDRESS}/trip`,
+  trips: (searchParams: Record<string, any>) =>
+    `${SERVER_ADDRESS}/${makeUrl('/trips', searchParams)}`,
 };
