@@ -7,6 +7,8 @@ type TProps = PropsWithChildren & {
 
 export const Container = ({ children, className }: TProps) => {
   return (
-    <section className={cn('container px-5', className)}>{children}</section>
+    <section className={cn('mx-auto max-w-screen-xl px-5', className)}>
+      {children}
+    </section>
   );
 };

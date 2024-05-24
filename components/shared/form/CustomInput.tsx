@@ -3,13 +3,21 @@ import { Input } from '@/components/ui/input';
 
 type TProps = React.InputHTMLAttributes<HTMLInputElement> & {
   error?: string;
+  label?: string;
+  containerClassName?: string;
 };
 
 export const CustomInput = React.forwardRef<HTMLInputElement, TProps>(
-  ({ error, ...props }, ref) => {
+  ({ error, label, containerClassName, ...props }, ref) => {
     return (
       <>
-        <Input type={props.type} ref={ref} {...props} />
+        <Input
+          type={props.type}
+          ref={ref}
+          {...props}
+          label={label}
+          containerClassName={containerClassName}
+        />
         {error && (
           <div className='rounded bg-error-50 p-1 text-xs text-error-500'>
             {error}

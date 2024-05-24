@@ -16,7 +16,7 @@ export const ActiveLink = ({ title, url, className }: TProps) => {
   return (
     <Link
       className={cn(
-        'rounded-md px-3 py-1 text-sm font-semibold text-neutral-500',
+        'rounded-sm px-5 py-2 text-sm font-semibold text-neutral-500',
         pathName === url && 'bg-primary-50 text-primary-500',
         className,
       )}

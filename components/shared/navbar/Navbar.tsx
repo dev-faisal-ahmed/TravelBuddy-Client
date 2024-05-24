@@ -7,8 +7,8 @@ import { ActiveLink } from './ActiveLink';
 import { navLinks } from '@/lib/data/navLinks';
 import { Button } from '@/components/ui/button';
 import { ProfileIcon } from '../profile-icon/ProfileIcon';
-import { TLoggedUser } from '@/lib/types/dataType';
 import { MobileMenu } from './MobileMenu';
+import { TLoggedUser } from '@/lib/types';
 
 const getUserInfo = () => {
   const token = cookies().get('token')?.value;

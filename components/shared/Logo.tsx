@@ -7,7 +7,7 @@ export const Logo = () => {
       <span className='text-primary'>
         <TravelIcon size={28} />
       </span>
-      <h3>
+      <h3 className='text-lg'>
         <span className='text-secondary-main'>Travel</span> Buddy
       </h3>
     </Link>
