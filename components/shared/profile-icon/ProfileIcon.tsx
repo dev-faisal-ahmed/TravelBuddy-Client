@@ -4,6 +4,7 @@ import * as Popover from '@/components/ui/popover';
 import { Button } from '../../ui/button';
 import { logoutAction } from './logoutAction';
 import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 type TProps = {
   name: string;
@@ -18,9 +19,12 @@ export const ProfileIcon = ({
   size = 40,
   fontSize = 24,
 }: TProps) => {
+  const router = useRouter();
+
   const onLogout = () => {
     logoutAction();
     toast.success('You are logged out!!');
+    router.refresh();
   };
 
   return (
