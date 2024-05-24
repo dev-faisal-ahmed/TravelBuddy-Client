@@ -39,9 +39,6 @@ export const useRegister = () => {
   });
 
   const onRegister = form.handleSubmit(async (data) => {
-    console.log('submitted');
-    console.log(data);
-
     try {
       const response = await registerAction(data);
       if (!response.ok) throw new Error(response.message);
