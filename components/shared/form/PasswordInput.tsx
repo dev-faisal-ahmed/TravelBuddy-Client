@@ -3,11 +3,11 @@ import { ClosedEyeIcon } from '@/components/icons/ClosedEyeIcon';
 import { EyeIcon } from '@/components/icons/EyeIcons';
 import { Input } from '@/components/ui/input';
 
-type Props = React.InputHTMLAttributes<HTMLInputElement> & {
+type TProps = React.InputHTMLAttributes<HTMLInputElement> & {
   error?: string;
 };
 
-export const PasswordInput = React.forwardRef<HTMLInputElement, Props>(
+export const PasswordInput = React.forwardRef<HTMLInputElement, TProps>(
   ({ error, ...props }, ref) => {
     const [isShown, setIsShown] = React.useState(false);
 
@@ -24,7 +24,7 @@ export const PasswordInput = React.forwardRef<HTMLInputElement, Props>(
           </div>
         </div>
         {error && (
-          <div className='text-error-500 bg-error-50 rounded p-1 text-xs'>
+          <div className='rounded bg-error-50 p-1 text-xs text-error-500'>
             {error}
           </div>
         )}

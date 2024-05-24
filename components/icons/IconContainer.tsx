@@ -1,10 +1,10 @@
 import { PropsWithChildren } from 'react';
 
-type Props = PropsWithChildren & {
+type TProps = PropsWithChildren & {
   size?: number;
 };
 
-export const IconContainer = ({ children, size = 24 }: Props) => {
+export const IconContainer = ({ children, size = 24 }: TProps) => {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'

@@ -1,10 +1,10 @@
 import { IconContainer } from './IconContainer';
 
-type Props = {
+type TProps = {
   size?: number;
 };
 
-export const ClosedEyeIcon = ({ size = 24 }: Props) => {
+export const ClosedEyeIcon = ({ size = 24 }: TProps) => {
   return (
     <IconContainer size={size}>
       <path d='M9.88 9.88a3 3 0 1 0 4.24 4.24' />

@@ -1,10 +1,10 @@
 import { IconContainer } from './IconContainer';
 
-type Props = {
+type TProps = {
   size?: number;
 };
 
-export const TravelIcon = ({ size = 24 }: Props) => {
+export const TravelIcon = ({ size = 24 }: TProps) => {
   return (
     <IconContainer size={size}>
       <path d='M22 18H6a2 2 0 0 1-2-2V7a2 2 0 0 0-2-2' />
