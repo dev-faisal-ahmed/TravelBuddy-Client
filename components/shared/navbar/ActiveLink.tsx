@@ -7,9 +7,10 @@ import { usePathname } from 'next/navigation';
 type TProps = {
   title: string;
   url: string;
+  className?: string;
 };
 
-export const ActiveLink = ({ title, url }: TProps) => {
+export const ActiveLink = ({ title, url, className }: TProps) => {
   const pathName = usePathname();
 
   return (
@@ -17,6 +18,7 @@ export const ActiveLink = ({ title, url }: TProps) => {
       className={cn(
         'rounded-md px-3 py-1 text-sm font-semibold text-neutral-500',
         pathName === url && 'bg-primary-50 text-primary-500',
+        className,
       )}
       href={url}
     >

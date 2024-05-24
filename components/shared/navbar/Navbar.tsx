@@ -8,6 +8,7 @@ import { navLinks } from '@/lib/data/navLinks';
 import { Button } from '@/components/ui/button';
 import { ProfileIcon } from '../profile-icon/ProfileIcon';
 import { TLoggedUser } from '@/lib/types/dataType';
+import { MobileMenu } from './MobileMenu';
 
 const getUserInfo = () => {
   const token = cookies().get('token')?.value;
@@ -25,19 +26,22 @@ export const Navbar = () => {
   return (
     <nav className='bg-white shadow'>
       <Container className='flex items-center gap-6 py-3'>
+        <MobileMenu />
         <Logo />
-        <div className='ml-auto flex items-center gap-3'>
+        <div className='ml-auto hidden items-center gap-3 md:flex'>
           {navLinks.map((link) => (
             <ActiveLink key={link.url} {...link} />
           ))}
         </div>
-        {user ? (
-          <ProfileIcon name={user.name} email={user.email} />
-        ) : (
-          <Link href={'/login'}>
-            <Button>Login</Button>
-          </Link>
-        )}
+        <div className='ml-auto md:ml-0'>
+          {user ? (
+            <ProfileIcon name={user.name} email={user.email} />
+          ) : (
+            <Link href={'/login'}>
+              <Button>Login</Button>
+            </Link>
+          )}
+        </div>
       </Container>
     </nav>
   );
