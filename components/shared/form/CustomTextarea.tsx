@@ -9,14 +9,14 @@ type TProps = React.TextareaHTMLAttributes<HTMLTextAreaElement> & {
 export const CustomTextArea = React.forwardRef<HTMLTextAreaElement, TProps>(
   ({ error, label, ...props }, ref) => {
     return (
-      <>
+      <div>
         <Textarea ref={ref} {...props} label={label} />
         {error && (
-          <div className='rounded bg-error-50 p-1 text-xs text-error-500'>
+          <div className='mx-1 mt-1 rounded bg-error-50 p-1 text-xs text-error-500'>
             {error}
           </div>
         )}
-      </>
+      </div>
     );
   },
 );

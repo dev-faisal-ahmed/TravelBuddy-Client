@@ -10,7 +10,7 @@ type TProps = React.InputHTMLAttributes<HTMLInputElement> & {
 export const CustomInput = React.forwardRef<HTMLInputElement, TProps>(
   ({ error, label, containerClassName, ...props }, ref) => {
     return (
-      <>
+      <div className={containerClassName}>
         <Input
           type={props.type}
           ref={ref}
@@ -19,11 +19,11 @@ export const CustomInput = React.forwardRef<HTMLInputElement, TProps>(
           containerClassName={containerClassName}
         />
         {error && (
-          <div className='rounded bg-error-50 p-1 text-xs text-error-500'>
+          <div className='mx-1 mt-1 rounded bg-error-50 p-1 text-xs text-error-500'>
             {error}
           </div>
         )}
-      </>
+      </div>
     );
   },
 );

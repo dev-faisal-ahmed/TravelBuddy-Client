@@ -6,8 +6,8 @@ import { CustomInput } from '@/components/shared/form/CustomInput';
 import { DatePicker } from '@/components/shared/DatePicker';
 import { CustomSelect } from '@/components/shared/form/CustomSelect';
 import { tripTypes } from '@/lib/data/constants';
-import { CustomTextArea } from '@/components/shared/form/CustomTextArea';
 import { Button } from '@/components/ui/button';
+import { CustomTextArea } from '@/components/shared/form/CustomTextarea';
 
 export const AddTrip = () => {
   const {
@@ -15,7 +15,13 @@ export const AddTrip = () => {
     tripTypes: { selectedTripType, onTripTypeChange },
     handlers: { onAddTrip },
     form,
+    imageRef,
+    loading,
   } = useAddTrip();
+
+  const {
+    formState: { errors },
+  } = form;
 
   return (
     <Container className='max-w-screen-md py-12'>
@@ -27,6 +33,7 @@ export const AddTrip = () => {
           <CustomInput
             {...form.register('destination')}
             type='text'
+            error={errors.destination?.message}
             placeholder='Destination'
             label='Destination'
           />
@@ -40,6 +47,7 @@ export const AddTrip = () => {
           />
 
           <CustomInput
+            ref={imageRef}
             containerClassName='sm:col-span-2'
             label='Images'
             type='file'
@@ -47,12 +55,14 @@ export const AddTrip = () => {
           />
 
           <CustomTextArea
+            error={errors.itinerary?.message}
             label='Itinerary'
             placeholder='Input Itinerary'
             {...form.register('itinerary')}
           />
 
           <CustomTextArea
+            error={errors.description?.message}
             label='Description'
             placeholder='Input Description'
             {...form.register('description')}
@@ -65,7 +75,9 @@ export const AddTrip = () => {
           />
           <DatePicker date={endDate} setDate={setEndDate} label='End Date' />
         </div>
-        <Button className='ml-auto mt-6 block'>Add Trip</Button>
+        <Button disabled={loading} className='ml-auto mt-6 block'>
+          Add Trip
+        </Button>
       </form>
     </Container>
   );

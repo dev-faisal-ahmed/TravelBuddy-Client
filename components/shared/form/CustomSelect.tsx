@@ -8,11 +8,17 @@ type TProps = {
   onSelectionChange: (val: string) => void;
 };
 
-export const CustomSelect = ({ placeholder, label, options }: TProps) => {
+export const CustomSelect = ({
+  placeholder,
+  label,
+  options,
+  selectedOption,
+  onSelectionChange,
+}: TProps) => {
   return (
     <div className='space-y-2'>
       <h3 className='pl-2 text-sm font-semibold'>{label}</h3>
-      <Select.Select>
+      <Select.Select value={selectedOption} onValueChange={onSelectionChange}>
         <Select.SelectTrigger>
           <Select.SelectValue placeholder={placeholder} />
         </Select.SelectTrigger>
