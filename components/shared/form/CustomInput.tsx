@@ -19,7 +19,7 @@ export const CustomInput = React.forwardRef<HTMLInputElement, TProps>(
           containerClassName={containerClassName}
         />
         {error && (
-          <div className='mx-1 mt-1 rounded bg-error-50 p-1 text-xs text-error-500'>
+          <div className='mx-1 mt-2 rounded bg-error-50 p-1 text-xs text-error-500'>
             {error}
           </div>
         )}

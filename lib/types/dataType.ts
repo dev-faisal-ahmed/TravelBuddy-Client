@@ -17,3 +17,7 @@ export type TTrip = {
   endDate: Date;
   tripType: TTripType;
 };
+
+export type TRequestTripId = {
+  trip: string;
+};

@@ -42,6 +42,9 @@ export const useAddTrip = () => {
       if (!startDate) throw new Error('Please Select Start Date');
       if (!endDate) throw new Error('Please Select End Date');
 
+      if (startDate.getTime() > endDate.getTime())
+        throw new Error('Start date has to be before end date.');
+
       // uploading multiple images
       const images: string[] = [];
       for (let i = 0; i < imageTarget.files.length; i++) {
@@ -61,14 +64,13 @@ export const useAddTrip = () => {
 
       if (!response.ok) throw new Error(response.message);
 
-      toast.success(response.message);
+      toast.success(response.message, { id: toastId });
       form.reset();
     } catch (err: any) {
       console.log(err);
-      toast.error(err.message || 'something went wrong');
+      toast.error(err.message || 'something went wrong', { id: toastId });
     } finally {
       setLoading(false);
-      toast.dismiss(toastId);
     }
   });
 

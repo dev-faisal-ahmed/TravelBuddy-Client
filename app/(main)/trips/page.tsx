@@ -1,5 +1,6 @@
 import { Trips } from '@/components/pages/trips';
 import { apiUrl } from '@/lib/data/apiUrl';
+import { tags } from '@/lib/data/tags';
 import { TTrip } from '@/lib/types';
 import { Metadata } from 'next';
 
@@ -8,7 +9,10 @@ export const metadata: Metadata = {
 };
 
 const fetchTrips = async (searchParams: Record<string, any>) => {
-  const response = await fetch(apiUrl.trips(searchParams));
+  const response = await fetch(apiUrl.trips(searchParams), {
+    next: { tags: [tags.TRIPS] },
+    cache: 'no-store',
+  });
   const tripsData = await response.json();
   return tripsData?.data as TTrip[];
 };

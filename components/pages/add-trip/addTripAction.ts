@@ -3,7 +3,8 @@
 import { apiUrl } from '@/lib/data/apiUrl';
 import { fetchOption } from '@/lib/utils/fetchOptions';
 import { TAddTripFormFields } from './useAddTrip';
-import { revalidatePath } from 'next/cache';
+import { revalidateTag } from 'next/cache';
+import { tags } from '@/lib/data/tags';
 
 type TAddTripPayload = TAddTripFormFields & {
   startDate: Date;
@@ -19,6 +20,6 @@ export const addTripAction = async (payload: TAddTripPayload) => {
   );
 
   const data = await response.json();
-  if (data.ok) revalidatePath('/trips');
+  if (data.ok) revalidateTag(tags.TRIPS);
   return data;
 };

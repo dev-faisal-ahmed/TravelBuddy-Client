@@ -6,25 +6,28 @@ import {
 } from 'lucide-react';
 import { Container } from '@/components/shared/Container';
 import { Message } from '@/components/shared/Message';
-import { TTrip } from '@/lib/types';
+import { TLoggedUser, TTrip } from '@/lib/types';
 import { ImageCarousel } from './ImageCarousel';
 import { format } from 'date-fns';
 import { Fragment, PropsWithChildren } from 'react';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 type TProps = {
   trip: TTrip;
+  user: TLoggedUser;
 };
 
 const formateActivities = (activity: string) => {
   return activity.split('*');
 };
 
-export const TripDetails = ({ trip }: TProps) => {
+export const TripDetails = ({ trip, user }: TProps) => {
   return (
     <Container className='py-12'>
       {trip ? (
         <div className='flex flex-col gap-12 rounded-md md:gap-24 md:border md:p-16 lg:flex-row'>
-          <div className='w-full'>
+          <div className='h-full w-full'>
             <ImageCarousel images={trip.images} />
           </div>
           <div className='w-full'>
@@ -62,6 +65,16 @@ export const TripDetails = ({ trip }: TProps) => {
                 ))}
               </ul>
             </div>
+            {user._id === trip.user ? (
+              <Button className='mt-6'>Update Trip</Button>
+            ) : (
+              <Link
+                className='mt-6 block'
+                href={`/add-trip-request/${trip._id}`}
+              >
+                <Button>Request To Add Trip</Button>
+              </Link>
+            )}
           </div>
         </div>
       ) : (

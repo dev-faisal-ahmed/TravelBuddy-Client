@@ -13,7 +13,7 @@ export const ImageCarousel = ({ images }: TProps) => {
           {images.map((image) => (
             <Carousel.CarouselItem key={image}>
               <Image
-                className='h-[400px] w-full rounded-md object-cover object-center'
+                className='h-full min-h-[450px] w-full rounded-md object-cover object-center'
                 src={image}
                 height={400}
                 width={500}
