@@ -1,4 +1,4 @@
-import { TRequestTrip } from '@/lib/types';
+import { TRequestedTrip } from '@/lib/types';
 import { apiUrl } from '@/lib/data/apiUrl';
 import { tags } from '@/lib/data/tags';
 import { cookies } from 'next/headers';
@@ -14,5 +14,5 @@ export const getRequestedTrips = async () => {
   });
 
   const requestedTrips = await response.json();
-  return requestedTrips?.data as TRequestTrip[];
+  return requestedTrips?.data as TRequestedTrip[];
 };

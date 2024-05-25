@@ -18,7 +18,7 @@ export type TTrip = {
   tripType: TTripType;
 };
 
-export type TRequestTripId = {
+export type TRequestedTripId = {
   trip: {
     _id: string;
   };
@@ -33,7 +33,7 @@ export type TMeta = {
 
 export type TTripRequestStatus = 'PENDING' | 'ACCEPTED';
 
-export type TRequestTrip = {
+export type TRequestedTrip = {
   _id: string;
   trip: TTrip;
   phone: string;

@@ -2,7 +2,7 @@
 
 import { Container } from '@/components/shared/Container';
 import { Message } from '@/components/shared/Message';
-import { TLoggedUser, TRequestTripId, TTrip } from '@/lib/types';
+import { TLoggedUser, TRequestedTripId, TTrip } from '@/lib/types';
 import { useAddTripRequest } from './useAddTripRequest';
 import { CustomInput } from '@/components/shared/form/CustomInput';
 import { Button } from '@/components/ui/button';
@@ -11,13 +11,13 @@ import Image from 'next/image';
 type TProps = {
   trip: TTrip;
   user: TLoggedUser;
-  requestedTrips: TRequestTripId[];
+  requestedTrips: TRequestedTripId[];
 };
 
 const size = 50;
 
 const isAlreadyRequested = (
-  requestedTrips: TRequestTripId[],
+  requestedTrips: TRequestedTripId[],
   tripId: string,
 ) => {
   for (const eachTrip of requestedTrips) {
