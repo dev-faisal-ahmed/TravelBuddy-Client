@@ -66,7 +66,9 @@ export const TripDetails = ({ trip, user }: TProps) => {
               </ul>
             </div>
             {user?._id === trip.user ? (
-              <Button className='mt-6'>Update Trip</Button>
+              <Link href={`/trip/update/${trip._id}`}>
+                <Button className='mt-6'>Update Trip</Button>
+              </Link>
             ) : (
               <Link
                 className='mt-6 block'

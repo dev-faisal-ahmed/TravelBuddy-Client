@@ -45,9 +45,11 @@ export const MyTripCard = ({
         </div>
         <div className='mt-6 flex items-center gap-5'>
           <DeleteTrip tripId={_id} />
-          <Button variant={'outline'} className='w-full'>
-            Update
-          </Button>
+          <Link href={`/trip/update/${_id}`} className='w-full'>
+            <Button variant={'outline'} className='w-full'>
+              Update
+            </Button>
+          </Link>
         </div>
         <Link className='mt-3 block' href={`/trip/${_id}`}>
           <Button className='w-full'>View Details</Button>
