@@ -1,14 +1,6 @@
-import { makeUrl } from '@/lib/utils/searchParamsHelper';
+import { makeUrl, removeNonEmptyObject } from '@/lib/utils/searchParamsHelper';
 import { useRouter } from 'next/navigation';
 import { useRef, useState } from 'react';
-
-const removeNonEmptyObject = (params: Record<string, any>) => {
-  const keys = Object.keys(params);
-  return keys.reduce((acc: Record<string, any>, key) => {
-    if (params[key]) acc[key] = params[key];
-    return acc;
-  }, {});
-};
 
 export const useSearch = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -35,8 +27,12 @@ export const useSearch = () => {
     );
 
     router.push(url);
-    router.refresh();
     setOpenModal(false);
+  };
+
+  const clearFilter = () => {
+    const url = makeUrl('/trips', removeNonEmptyObject({}));
+    router.push(url);
   };
 
   return {
@@ -51,5 +47,6 @@ export const useSearch = () => {
     handleSearch,
     openModal,
     setOpenModal,
+    clearFilter,
   };
 };
