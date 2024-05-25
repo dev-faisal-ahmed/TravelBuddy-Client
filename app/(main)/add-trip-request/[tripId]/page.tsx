@@ -1,11 +1,11 @@
 import { AddTripRequest } from '@/components/pages/add-trip-request';
-import { getTripDetails } from '../../trip/[tripId]/page';
 import { cookies } from 'next/headers';
 import { jwtDecode } from 'jwt-decode';
 import { TLoggedUser, TRequestTripId } from '@/lib/types';
 import { apiUrl } from '@/lib/data/apiUrl';
 import { tags } from '@/lib/data/tags';
 import { redirect } from 'next/navigation';
+import { getTripDetails } from '@/global-data-fetching/getTripDetails';
 
 type TProps = {
   params: { tripId: string };
