@@ -20,7 +20,7 @@ export default function ProfileLayout({ children }: PropsWithChildren) {
       <section className='bg-neutral-50 shadow-md'>
         <Container>
           <Image
-            className='h-[400px] w-full rounded-b-md'
+            className='h-[250px] w-full rounded-b-md md:h-[400px]'
             src={'/images/auth-banner.png'}
             height={500}
             width={500}

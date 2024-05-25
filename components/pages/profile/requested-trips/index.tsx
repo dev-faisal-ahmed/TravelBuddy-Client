@@ -9,7 +9,7 @@ type TProps = {
 
 export const ProfileRequestedTrips = ({ requestedTrips }: TProps) => {
   return (
-    <Container className='py-12'>
+    <Container className='py-6'>
       {requestedTrips && requestedTrips.length ? (
         <div className='grid gap-6 md:grid-cols-2 xl:grid-cols-3'>
           {requestedTrips.map((trip) => (

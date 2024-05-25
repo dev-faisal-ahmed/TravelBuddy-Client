@@ -13,6 +13,7 @@ export const apiUrl = {
   tripDetails: (tripId: string) => `${SERVER_ADDRESS}/trip/${tripId}`,
   addTripRequest: `${SERVER_ADDRESS}/trip-request`,
   requestedTrip: `${SERVER_ADDRESS}/trip-request/requested`,
+  myTrips: `${SERVER_ADDRESS}/trips/mine`,
   trips: (searchParams: Record<string, any>) =>
     `${SERVER_ADDRESS}/${makeUrl('/trips', searchParams)}`,
 };
