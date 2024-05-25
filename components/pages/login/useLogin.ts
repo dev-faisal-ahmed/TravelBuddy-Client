@@ -34,7 +34,7 @@ export const useLogin = () => {
       if (!response.ok) throw new Error(response.message);
 
       toast.success(response.message);
-      router.push('/');
+      router.back();
     } catch (err: any) {
       console.log(err);
       toast.error(err.message || 'something went wrong');

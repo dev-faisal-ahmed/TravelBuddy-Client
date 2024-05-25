@@ -5,6 +5,7 @@ import { jwtDecode } from 'jwt-decode';
 import { TLoggedUser, TRequestTripId } from '@/lib/types';
 import { apiUrl } from '@/lib/data/apiUrl';
 import { tags } from '@/lib/data/tags';
+import { redirect } from 'next/navigation';
 
 type TProps = {
   params: { tripId: string };
@@ -17,7 +18,7 @@ const getRequestedTrips = async () => {
 
   const response = await fetch(request, {
     cache: 'no-store',
-    next: { tags: [tags.REQUESTED_TRIPS] },
+    next: { tags: [tags.requestedTrips] },
   });
 
   const requestedTrips = await response.json();
@@ -28,6 +29,10 @@ const getRequestedTrips = async () => {
 export default async function AddTripRequestPage({ params }: TProps) {
   const tripData = await getTripDetails(params.tripId);
   const token = cookies().get('token')?.value;
+
+  // if user not logged in redirect the user to the login page
+  if (!token) redirect('/login');
+
   const user = jwtDecode(token!) as TLoggedUser;
   const requestedTrips = await getRequestedTrips();
 

@@ -15,7 +15,7 @@ import Link from 'next/link';
 
 type TProps = {
   trip: TTrip;
-  user: TLoggedUser;
+  user: TLoggedUser | null;
 };
 
 const formateActivities = (activity: string) => {
@@ -65,7 +65,7 @@ export const TripDetails = ({ trip, user }: TProps) => {
                 ))}
               </ul>
             </div>
-            {user._id === trip.user ? (
+            {user?._id === trip.user ? (
               <Button className='mt-6'>Update Trip</Button>
             ) : (
               <Link

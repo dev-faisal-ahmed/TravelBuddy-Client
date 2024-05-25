@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const fetchTrips = async (searchParams: Record<string, any>) => {
   const response = await fetch(apiUrl.trips(searchParams), {
-    next: { tags: [tags.TRIPS] },
+    next: { tags: [tags.trips] },
     cache: 'no-store',
   });
   const tripsData = await response.json();
