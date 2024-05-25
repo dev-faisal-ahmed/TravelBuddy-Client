@@ -6,6 +6,7 @@ import { TLoggedUser, TRequestTripId, TTrip } from '@/lib/types';
 import { useAddTripRequest } from './useAddTripRequest';
 import { CustomInput } from '@/components/shared/form/CustomInput';
 import { Button } from '@/components/ui/button';
+import Image from 'next/image';
 
 type TProps = {
   trip: TTrip;
@@ -13,12 +14,14 @@ type TProps = {
   requestedTrips: TRequestTripId[];
 };
 
+const size = 50;
+
 const isAlreadyRequested = (
   requestedTrips: TRequestTripId[],
   tripId: string,
 ) => {
   for (const eachTrip of requestedTrips) {
-    if (tripId === eachTrip.trip) return true;
+    if (tripId === eachTrip.trip._id) return true;
   }
 
   return false;
@@ -33,12 +36,23 @@ export const AddTripRequest = ({ trip, user, requestedTrips }: TProps) => {
     formState: { errors },
   } = form;
 
-  console.log(requestedTrips);
-
   return (
     <Container className='py-12'>
       {trip ? (
         <div className='mx-auto max-w-[720px] rounded-md border p-6'>
+          <div className='mb-4 flex items-center gap-4'>
+            <div>
+              <Image
+                className='object-cover'
+                style={{ borderRadius: size / 2, width: size, height: size }}
+                src={trip.images[0]}
+                width={size}
+                height={size}
+                alt='Trip'
+              />
+            </div>
+            <h3 className='font-semibold'>{trip.destination}</h3>
+          </div>
           <h3 className='mb-6 font-semibold text-primary'>
             Create Trip Request
           </h3>
@@ -73,12 +87,20 @@ export const AddTripRequest = ({ trip, user, requestedTrips }: TProps) => {
             </div>
             {isAlreadyRequested(requestedTrips, trip._id) ? (
               <Button disabled className='ml-auto mt-3 block'>
-                You Have Already Added This Trip
+                You Have Already Requested For This Trip
               </Button>
             ) : (
-              <Button disabled={loading} className='ml-auto mt-3 block'>
-                Sent Trip Request
-              </Button>
+              <>
+                {user._id === trip.user ? (
+                  <Button disabled className='ml-auto mt-3 block'>
+                    You are the owner of this trip
+                  </Button>
+                ) : (
+                  <Button disabled={loading} className='ml-auto mt-3 block'>
+                    Sent Trip Request
+                  </Button>
+                )}
+              </>
             )}
           </form>
         </div>

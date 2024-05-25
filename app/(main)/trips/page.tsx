@@ -14,7 +14,6 @@ const fetchTrips = async (searchParams: Record<string, any>) => {
     cache: 'no-store',
   });
   const tripsData = await response.json();
-  console.log(tripsData);
   return { trips: tripsData?.data as TTrip[], meta: tripsData?.meta as TMeta };
 };
 

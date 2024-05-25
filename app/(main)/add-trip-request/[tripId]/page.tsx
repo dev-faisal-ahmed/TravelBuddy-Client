@@ -1,29 +1,13 @@
 import { AddTripRequest } from '@/components/pages/add-trip-request';
 import { cookies } from 'next/headers';
 import { jwtDecode } from 'jwt-decode';
-import { TLoggedUser, TRequestTripId } from '@/lib/types';
-import { apiUrl } from '@/lib/data/apiUrl';
-import { tags } from '@/lib/data/tags';
+import { TLoggedUser } from '@/lib/types';
 import { redirect } from 'next/navigation';
 import { getTripDetails } from '@/global-data-fetching/getTripDetails';
+import { getRequestedTrips } from '@/global-data-fetching/getRequestedTrips';
 
 type TProps = {
   params: { tripId: string };
-};
-
-const getRequestedTrips = async () => {
-  const request = new Request(apiUrl.requestedTrip, {
-    headers: { Authorization: cookies().get('token')?.value as string },
-  });
-
-  const response = await fetch(request, {
-    cache: 'no-store',
-    next: { tags: [tags.requestedTrips] },
-  });
-
-  const requestedTrips = await response.json();
-  console.log(requestedTrips);
-  return requestedTrips?.data as TRequestTripId[];
 };
 
 export default async function AddTripRequestPage({ params }: TProps) {

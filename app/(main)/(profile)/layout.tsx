@@ -17,7 +17,7 @@ export default function ProfileLayout({ children }: PropsWithChildren) {
 
   return (
     <>
-      <section className='bg-white shadow-md'>
+      <section className='bg-neutral-50 shadow-md'>
         <Container>
           <Image
             className='h-[400px] w-full rounded-b-md'

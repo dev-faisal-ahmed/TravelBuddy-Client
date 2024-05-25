@@ -19,7 +19,9 @@ export type TTrip = {
 };
 
 export type TRequestTripId = {
-  trip: string;
+  trip: {
+    _id: string;
+  };
 };
 
 export type TMeta = {
@@ -27,4 +29,14 @@ export type TMeta = {
   limit: number;
   total: number;
   totalPages: number;
+};
+
+export type TTripRequestStatus = 'PENDING' | 'ACCEPTED';
+
+export type TRequestTrip = {
+  _id: string;
+  trip: TTrip;
+  phone: string;
+  address: string;
+  status: TTripRequestStatus;
 };
