@@ -21,3 +21,10 @@ export type TTrip = {
 export type TRequestTripId = {
   trip: string;
 };
+
+export type TMeta = {
+  page: number;
+  limit: number;
+  total: number;
+  totalPages: number;
+};

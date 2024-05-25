@@ -1,7 +1,7 @@
 import { Trips } from '@/components/pages/trips';
 import { apiUrl } from '@/lib/data/apiUrl';
 import { tags } from '@/lib/data/tags';
-import { TTrip } from '@/lib/types';
+import { TMeta, TTrip } from '@/lib/types';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -14,7 +14,8 @@ const fetchTrips = async (searchParams: Record<string, any>) => {
     cache: 'no-store',
   });
   const tripsData = await response.json();
-  return tripsData?.data as TTrip[];
+  console.log(tripsData);
+  return { trips: tripsData?.data as TTrip[], meta: tripsData?.meta as TMeta };
 };
 
 type TProps = {
@@ -22,6 +23,6 @@ type TProps = {
 };
 
 export default async function TripsPage({ searchParams }: TProps) {
-  const trips = await fetchTrips(searchParams);
-  return <Trips trips={trips} />;
+  const { trips, meta } = await fetchTrips(searchParams);
+  return <Trips trips={trips} meta={meta} searchParams={searchParams} />;
 }
