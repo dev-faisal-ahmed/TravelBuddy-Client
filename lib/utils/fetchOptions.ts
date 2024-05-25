@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers';
 
 type TFetchOption = {
-  method: 'POST' | 'PATCH' | 'GET';
+  method: 'POST' | 'PATCH' | 'GET' | 'DELETE';
   body?: any;
 };
 

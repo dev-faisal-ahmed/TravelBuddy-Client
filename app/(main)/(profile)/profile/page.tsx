@@ -7,6 +7,8 @@ import { cookies } from 'next/headers';
 const getMyTrips = async () => {
   const request = new Request(apiUrl.myTrips, {
     headers: { Authorization: cookies().get('token')?.value as string },
+    next: { tags: [tags.myTrips] },
+    cache: 'no-store',
   });
 
   const response = await fetch(request, {

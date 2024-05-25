@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { TTrip } from '@/lib/types';
 import { format } from 'date-fns';
 import Link from 'next/link';
+import { DeleteTrip } from './delete-trip';
 
 export const MyTripCard = ({
   _id,
@@ -43,9 +44,7 @@ export const MyTripCard = ({
           </p>
         </div>
         <div className='mt-6 flex items-center gap-5'>
-          <Button variant={'outline'} className='w-full'>
-            Delete
-          </Button>
+          <DeleteTrip tripId={_id} />
           <Button variant={'outline'} className='w-full'>
             Update
           </Button>

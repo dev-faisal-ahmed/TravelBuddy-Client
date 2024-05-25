@@ -14,6 +14,7 @@ export const apiUrl = {
   addTripRequest: `${SERVER_ADDRESS}/trip-request`,
   requestedTrip: `${SERVER_ADDRESS}/trip-request/requested`,
   myTrips: `${SERVER_ADDRESS}/trips/mine`,
+  deleteTrip: (tripId: string) => `${SERVER_ADDRESS}/trip/${tripId}`,
   trips: (searchParams: Record<string, any>) =>
     `${SERVER_ADDRESS}/${makeUrl('/trips', searchParams)}`,
 };
