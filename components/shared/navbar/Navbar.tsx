@@ -24,7 +24,7 @@ export const Navbar = () => {
   const user = getUserInfo();
 
   return (
-    <nav className='bg-white shadow'>
+    <nav className='sticky top-0 z-20 bg-white shadow'>
       <Container className='flex items-center gap-6 py-3'>
         <MobileMenu />
         <Logo />

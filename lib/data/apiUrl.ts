@@ -8,6 +8,7 @@ export const apiUrl = {
   register: `${SERVER_ADDRESS}/auth/register`,
   login: `${SERVER_ADDRESS}/auth/login`,
   addTrip: `${SERVER_ADDRESS}/trip`,
+  tripDetails: (tripId: string) => `${SERVER_ADDRESS}/trip/${tripId}`,
   trips: (searchParams: Record<string, any>) =>
     `${SERVER_ADDRESS}/${makeUrl('/trips', searchParams)}`,
 };

@@ -3,6 +3,7 @@
 import { apiUrl } from '@/lib/data/apiUrl';
 import { fetchOption } from '@/lib/utils/fetchOptions';
 import { TAddTripFormFields } from './useAddTrip';
+import { revalidatePath } from 'next/cache';
 
 type TAddTripPayload = TAddTripFormFields & {
   startDate: Date;
@@ -18,6 +19,6 @@ export const addTripAction = async (payload: TAddTripPayload) => {
   );
 
   const data = await response.json();
-  console.log(data);
+  if (data.ok) revalidatePath('/trips');
   return data;
 };

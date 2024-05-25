@@ -13,7 +13,7 @@ export const Trips = async ({ trips }: TProps) => {
     <Container className='py-12'>
       <SearchTrips />
       {trips && trips?.length ? (
-        <div className='mt-12 grid grid-cols-3 gap-6'>
+        <div className='mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3'>
           {trips.map((trip) => (
             <TripCard key={trip._id} {...trip} />
           ))}

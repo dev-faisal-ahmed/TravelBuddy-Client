@@ -37,11 +37,11 @@ export const SearchTrips = () => {
               <h4>Search Here...</h4>
             </div>
             <div>
-              <Button size={'icon'}>
+              <Button className='hidden' size={'icon'}>
                 <SlidersHorizontalIcon />
               </Button>
             </div>
-            <Button>Search</Button>
+            <Button className='hidden'>Search</Button>
           </div>
         </Dialog.DialogTrigger>
 

@@ -1,5 +1,6 @@
 import {
   CalendarCheck as CalendarCheckIcon,
+  CalendarMinus2 as CalendarMinus2Icon,
   LayoutList as LayoutListIcon,
   MapPin as MapPinIcon,
 } from 'lucide-react';
@@ -19,7 +20,7 @@ export const TripCard = ({
   return (
     <div
       style={{
-        backgroundImage: `linear-gradient(45deg, rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url(${images?.[0]})`,
+        backgroundImage: `linear-gradient(45deg, rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url(${images?.[0]})`,
         minHeight: 400,
       }}
       className='flex flex-col justify-end rounded-md bg-cover bg-center p-6'
@@ -35,13 +36,13 @@ export const TripCard = ({
             <span className='lowercase'>{tripType.slice(1)}</span>
           </span>
         </p>
-        <div className='mt-3 flex items-center justify-between'>
+        <div className='mt-3 flex flex-wrap items-center justify-between gap-3'>
           <div className='flex items-center gap-2 text-xs text-neutral-500'>
             <CalendarCheckIcon size={16} />
             {format(startDate, 'PPP')}
           </div>
           <div className='flex items-center gap-2 text-xs text-neutral-500'>
-            <CalendarCheckIcon size={16} />
+            <CalendarMinus2Icon size={16} />
             {format(endDate, 'PPP')}
           </div>
         </div>

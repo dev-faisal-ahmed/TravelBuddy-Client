@@ -9,7 +9,7 @@ export type TTripType = 'ADVENTURE' | 'BUSINESS' | 'LEISURE' | 'STUDY_TOUR';
 export type TTrip = {
   _id: string;
   user: string;
-  images: string;
+  images: string[];
   destination: string;
   description: string;
   itinerary: string;
