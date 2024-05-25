@@ -21,7 +21,7 @@ export const addTripRequestAction = async ({
   );
 
   const responseData = await response.json();
-  if (responseData?.ok) revalidateTag(tags.REQUESTED_TRIPS);
+  if (responseData?.ok) revalidateTag(tags.requestedTrips);
 
   return responseData;
 };

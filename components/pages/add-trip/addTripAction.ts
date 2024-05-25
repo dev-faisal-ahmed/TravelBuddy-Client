@@ -20,6 +20,6 @@ export const addTripAction = async (payload: TAddTripPayload) => {
   );
 
   const data = await response.json();
-  if (data.ok) revalidateTag(tags.TRIPS);
+  if (data.ok) revalidateTag(tags.trips);
   return data;
 };
