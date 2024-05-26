@@ -2,19 +2,15 @@ import { AdminTrips } from '@/components/pages/admin/trips';
 import { apiUrl } from '@/lib/data/apiUrl';
 import { tags } from '@/lib/data/tags';
 import { TAdminTrip } from '@/lib/types';
+import { fetchRequestMaker } from '@/lib/utils/fetchRequestMaker';
 import { Metadata } from 'next';
-import { cookies } from 'next/headers';
 
 export const metadata: Metadata = {
   title: 'Travel Buddy | Dashboard - Trips ',
 };
 
 const getAllTrips = async () => {
-  const request = new Request(apiUrl.admin.trips, {
-    headers: { Authorization: cookies().get('token')?.value as string },
-  });
-
-  const response = await fetch(request, {
+  const response = await fetch(fetchRequestMaker(apiUrl.admin.trips), {
     cache: 'no-store',
     next: { tags: [tags.adminTrips] },
   });

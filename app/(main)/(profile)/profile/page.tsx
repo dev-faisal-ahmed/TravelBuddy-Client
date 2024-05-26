@@ -2,16 +2,10 @@ import { MyTrips } from '@/components/pages/profile/my-trips';
 import { apiUrl } from '@/lib/data/apiUrl';
 import { tags } from '@/lib/data/tags';
 import { TTrip } from '@/lib/types';
-import { cookies } from 'next/headers';
+import { fetchRequestMaker } from '@/lib/utils/fetchRequestMaker';
 
 const getMyTrips = async () => {
-  const request = new Request(apiUrl.myTrips, {
-    headers: { Authorization: cookies().get('token')?.value as string },
-    next: { tags: [tags.myTrips] },
-    cache: 'no-store',
-  });
-
-  const response = await fetch(request, {
+  const response = await fetch(fetchRequestMaker(apiUrl.myTrips), {
     cache: 'no-store',
     next: { tags: [tags.myTrips] },
   });
