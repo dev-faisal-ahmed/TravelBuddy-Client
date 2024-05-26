@@ -2,23 +2,30 @@
 
 import * as Dialog from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
+import { TUserRole } from '@/lib/types';
 import { useState } from 'react';
 import { toast } from 'sonner';
-import { deleteTripAction } from './deleteTripAction';
+import { changeRoleAction } from './changeRoleAction';
 
 type TProps = {
-  tripId: string;
+  userId: string;
+  userRole: TUserRole;
 };
 
-export const DeleteTrip = ({ tripId }: TProps) => {
+export const ChangeRole = ({ userId, userRole }: TProps) => {
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const onDeleteTrip = async () => {
+  const onRoleChange = async () => {
     const toastId = toast.loading('Deleting the trip...!');
     try {
       setLoading(true);
-      const response = await deleteTripAction(tripId);
+
+      const response = await changeRoleAction(
+        userId,
+        userRole === 'ADMIN' ? 'USER' : 'ADMIN',
+      );
+
       if (!response?.ok) throw new Error(response?.message);
 
       toast.success(response.message, { id: toastId });
@@ -34,7 +41,7 @@ export const DeleteTrip = ({ tripId }: TProps) => {
   return (
     <Dialog.Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
       <Dialog.DialogTrigger asChild>
-        <Button variant={'destructive'}>Delete</Button>
+        <Button>Make {userRole === 'ADMIN' ? 'User' : 'Admin'}</Button>
       </Dialog.DialogTrigger>
       <Dialog.DialogContent>
         <Dialog.DialogTitle>Are You Sure?</Dialog.DialogTitle>
@@ -45,7 +52,7 @@ export const DeleteTrip = ({ tripId }: TProps) => {
             </Button>
           </Dialog.DialogClose>
           <Button
-            onClick={onDeleteTrip}
+            onClick={onRoleChange}
             disabled={loading}
             className='w-24'
             variant={'destructive'}

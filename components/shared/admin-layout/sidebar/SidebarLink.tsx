@@ -17,7 +17,7 @@ export function SidebarLink({ title, url, icon }: TProps) {
   return (
     <Link
       className={cn(
-        `flex items-center gap-3 rounded py-2 pl-3 pr-16 text-sm transition-colors duration-300 hover:bg-gray-400 hover:text-white`,
+        `flex items-center gap-3 rounded-sm py-2 pl-3 pr-16 text-sm transition-colors duration-300 hover:bg-gray-400 hover:text-white`,
         pathName === url ? 'bg-primary text-white' : null,
       )}
       href={url}

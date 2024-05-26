@@ -59,7 +59,10 @@ export const AdminTrips = ({ trips }: TProps) => {
                   startDate,
                   endDate,
                 }) => (
-                  <Table.TableRow className='cursor-pointer border-0' key={_id}>
+                  <Table.TableRow
+                    className='cursor-pointer border-neutral-300'
+                    key={_id}
+                  >
                     <Table.TableCell>
                       <Image
                         style={{ height: 50, width: 50 }}

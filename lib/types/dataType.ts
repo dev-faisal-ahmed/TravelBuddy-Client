@@ -1,5 +1,17 @@
 export type TUserRole = 'ADMIN' | 'USER';
 
+export type TUserStatus = 'ACTIVE' | 'BLOCKED';
+
+export type TUser = {
+  _id: string;
+  email: string;
+  name: string;
+  password: string;
+  photoUrl: string;
+  role: TUserRole;
+  status: TUserStatus;
+};
+
 export type TLoggedUser = {
   _id: string;
   name: string;
