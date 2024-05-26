@@ -59,3 +59,12 @@ export type TRequestedTrip = {
 export type TAdminTrip = TTrip & {
   user: { name: string };
 };
+
+export type TJoinRequest = {
+  _id: string;
+  user: TUser;
+  trip: TTrip;
+  phone: string;
+  address: string;
+  status: TTripRequestStatus;
+};

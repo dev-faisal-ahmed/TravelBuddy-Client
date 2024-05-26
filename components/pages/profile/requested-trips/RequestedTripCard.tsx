@@ -44,7 +44,7 @@ export const RequestedTripCard = ({ trip, status }: TRequestedTrip) => {
 
       <div
         className={cn(
-          'absolute right-6 top-6 flex items-center gap-2 rounded-sm px-3 py-1 text-sm text-white',
+          'absolute right-6 top-6 flex items-center gap-2 rounded-sm px-3 py-1 text-xs text-white',
           status === 'ACCEPTED' ? 'bg-primary' : 'bg-orange-500',
         )}
       >

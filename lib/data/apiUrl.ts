@@ -12,6 +12,8 @@ export const apiUrl = {
   addTrip: `${SERVER_ADDRESS}/trip`,
   addTripRequest: `${SERVER_ADDRESS}/trip-request`,
   requestedTrip: `${SERVER_ADDRESS}/trip-request/requested`,
+  joinRequests: `${SERVER_ADDRESS}/trip-request/join-requests`,
+  responseRequest: `${SERVER_ADDRESS}/trip-request`,
   myTrips: `${SERVER_ADDRESS}/trips/mine`,
 
   tripDetails: (tripId: string) => `${SERVER_ADDRESS}/trip/${tripId}`,

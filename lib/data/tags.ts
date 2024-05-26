@@ -5,4 +5,5 @@ export const tags = {
   myTrips: 'MY_TRIPS',
   adminTrips: 'ADMIN_TRIPS',
   adminUsers: 'ADMIN_USERS',
+  joinRequests: 'JOIN_REQUESTS',
 };
