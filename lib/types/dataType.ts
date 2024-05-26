@@ -1,7 +1,10 @@
+export type TUserRole = 'ADMIN' | 'USER';
+
 export type TLoggedUser = {
+  _id: string;
   name: string;
   email: string;
-  _id: string;
+  role: TUserRole;
 };
 
 export type TTripType = 'ADVENTURE' | 'BUSINESS' | 'LEISURE' | 'STUDY_TOUR';

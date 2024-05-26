@@ -2,10 +2,10 @@
 
 import * as Sheet from '@/components/ui/sheet';
 import { Menu as MenuIcon, X as XIcon } from 'lucide-react';
-import { navLinks } from '@/lib/data/links';
 import { ActiveLink } from './ActiveLink';
 import { Logo } from '../Logo';
 import { useState } from 'react';
+import { navLinks } from '@/lib/data/links';
 
 export const MobileMenu = () => {
   const [isSheetOpen, setIsSheetOpen] = useState(false);

@@ -1,13 +1,13 @@
 import { EditProfile } from '@/components/shared/profile-layout/edit-profile';
 import { ProfileLink } from '@/components/shared/profile-layout/ProfileLink';
 import { Container } from '@/components/shared/Container';
-import { profileLinks } from '@/lib/data/links';
 import { redirect } from 'next/navigation';
 import { TLoggedUser } from '@/lib/types';
 import { PropsWithChildren } from 'react';
 import { cookies } from 'next/headers';
 import { jwtDecode } from 'jwt-decode';
 import { Button } from '@/components/ui/button';
+import { profileLinks } from '@/lib/data/links';
 import Image from 'next/image';
 import Link from 'next/link';
 

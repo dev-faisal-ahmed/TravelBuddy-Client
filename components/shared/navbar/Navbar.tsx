@@ -4,11 +4,11 @@ import { Container } from '../Container';
 import { Logo } from '../Logo';
 import { JwtPayload, jwtDecode } from 'jwt-decode';
 import { ActiveLink } from './ActiveLink';
-import { navLinks } from '@/lib/data/links';
 import { Button } from '@/components/ui/button';
 import { ProfileIcon } from '../profile-icon/ProfileIcon';
 import { MobileMenu } from './MobileMenu';
 import { TLoggedUser } from '@/lib/types';
+import { navLinks } from '@/lib/data/links';
 
 const getUserInfo = () => {
   const token = cookies().get('token')?.value;
