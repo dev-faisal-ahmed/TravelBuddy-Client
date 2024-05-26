@@ -2,22 +2,20 @@ import { Container } from '@/components/shared/Container';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
+import { SearchBar } from './search-bar';
 
 export const Banner = () => {
   return (
-    <Container className='flex flex-col items-center gap-6 py-6 sm:py-12 md:flex-row md:gap-24 md:pl-24'>
-      <div className='px-6 lg:w-[100%] '>
-        <div className='relative'>
-          <Image
-            className='z-10 h-[350px] w-full rounded-t-full object-cover md:h-[550px]'
-            src={'/images/banner.jpg'}
-            width={500}
-            height={500}
-            alt='Banner'
-          />
-          <div className='absolute left-4 top-0 -z-10 h-[350px] w-full rounded-t-full border sm:left-8 md:h-[550px]' />
-          <div className='absolute -left-6 top-0  -z-10 h-[350px] w-full rounded-t-full bg-[#043C39] sm:-left-16 md:h-[550px]' />
-        </div>
+    <Container className='flex flex-col items-center gap-12 py-6 sm:py-12 md:flex-row md:gap-24'>
+      <div className='px-6 lg:w-[100%]'>
+        <Image
+          style={{ boxShadow: '5px 0 10px 2px white' }}
+          className='h-[350px] w-full rounded-t-full border-l-[40px] border-r-4 object-cover md:h-[550px]'
+          src={'/images/banner.jpg'}
+          width={500}
+          height={500}
+          alt='Banner'
+        />
       </div>
 
       <div className='w-full'>
@@ -35,9 +33,10 @@ export const Banner = () => {
           unforgettable trip.
         </p>
 
-        <Link className='mt-12 block' href={'/trip'}>
+        <Link className='my-12 block' href={'/trip'}>
           <Button>Share Your Trips</Button>
         </Link>
+        <SearchBar />
       </div>
     </Container>
   );

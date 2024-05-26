@@ -3,7 +3,9 @@ import { Banner } from './Banner';
 export const Home = () => {
   return (
     <>
-      <Banner />
+      <section className='bg-primary-100'>
+        <Banner />
+      </section>
     </>
   );
 };
