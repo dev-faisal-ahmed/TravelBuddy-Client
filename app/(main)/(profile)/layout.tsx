@@ -7,7 +7,9 @@ import { TLoggedUser } from '@/lib/types';
 import { PropsWithChildren } from 'react';
 import { cookies } from 'next/headers';
 import { jwtDecode } from 'jwt-decode';
+import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function ProfileLayout({ children }: PropsWithChildren) {
   const token = cookies().get('token')?.value;
@@ -34,7 +36,10 @@ export default function ProfileLayout({ children }: PropsWithChildren) {
               <h3 className='text-2xl font-semibold'>{user.name}</h3>
               <p className='text-neutral-600'>{user.email}</p>
             </div>
-            <div className='mx-auto ml-auto mt-auto py-3 md:mr-0'>
+            <div className='mx-auto ml-auto mt-auto flex flex-col gap-3 py-3 md:mr-0 md:flex-row'>
+              <Link href={'/profile/change-password'}>
+                <Button variant={'outline'}>Change Password</Button>
+              </Link>
               <EditProfile user={user} />
             </div>
           </div>
