@@ -35,7 +35,7 @@ export default function ProfileLayout({ children }: PropsWithChildren) {
               <p className='text-neutral-600'>{user.email}</p>
             </div>
             <div className='mx-auto ml-auto mt-auto py-3 md:mr-0'>
-              <EditProfile />
+              <EditProfile user={user} />
             </div>
           </div>
           <div className='mt-4 flex items-center gap-4 border-t border-neutral-300 pt-3'>

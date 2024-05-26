@@ -18,4 +18,5 @@ export const apiUrl = {
   updateTrip: (tripId: string) => `${SERVER_ADDRESS}/trip/${tripId}`,
   trips: (searchParams: Record<string, any>) =>
     `${SERVER_ADDRESS}/${makeUrl('/trips', searchParams)}`,
+  editProfile: `${SERVER_ADDRESS}/profile`,
 };
