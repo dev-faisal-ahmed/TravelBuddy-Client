@@ -20,7 +20,7 @@ export const TripCard = ({
   return (
     <div className='rounded-md border border-neutral-300 bg-white p-4'>
       <Image
-        className='rounded-sm'
+        className='w-full rounded-sm object-cover object-center'
         style={{ height: 250 }}
         src={images[0]}
         width={400}
