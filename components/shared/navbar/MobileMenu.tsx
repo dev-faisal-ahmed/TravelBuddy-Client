@@ -6,12 +6,15 @@ import { ActiveLink } from './ActiveLink';
 import { Logo } from '../Logo';
 import { useState } from 'react';
 import { navLinks } from '@/lib/data/links';
+import { TUserRole } from '@/lib/types';
 
-export const MobileMenu = () => {
+type TProps = { role: TUserRole | undefined };
+
+export const MobileMenu = ({ role }: TProps) => {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   return (
-    <div className='md:hidden'>
+    <div className='lg:hidden'>
       <Sheet.Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
         <Sheet.SheetTrigger className='cursor-pointer' asChild>
           <MenuIcon size={24} />
@@ -36,6 +39,13 @@ export const MobileMenu = () => {
                 <ActiveLink className='block w-full' {...link} />
               </div>
             ))}
+            {role === 'ADMIN' && (
+              <ActiveLink
+                className='block w-full'
+                title='Dashboard'
+                url={'/admin/trips'}
+              />
+            )}
           </div>
         </Sheet.SheetContent>
       </Sheet.Sheet>

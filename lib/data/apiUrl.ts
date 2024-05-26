@@ -13,6 +13,7 @@ export const apiUrl = {
   addTripRequest: `${SERVER_ADDRESS}/trip-request`,
   requestedTrip: `${SERVER_ADDRESS}/trip-request/requested`,
   myTrips: `${SERVER_ADDRESS}/trips/mine`,
+
   tripDetails: (tripId: string) => `${SERVER_ADDRESS}/trip/${tripId}`,
   deleteTrip: (tripId: string) => `${SERVER_ADDRESS}/trip/${tripId}`,
   updateTrip: (tripId: string) => `${SERVER_ADDRESS}/trip/${tripId}`,
@@ -20,4 +21,9 @@ export const apiUrl = {
     `${SERVER_ADDRESS}/${makeUrl('/trips', searchParams)}`,
   editProfile: `${SERVER_ADDRESS}/profile`,
   changePassword: `${SERVER_ADDRESS}/profile/change-password`,
+
+  admin: {
+    trips: `${SERVER_ADDRESS}/admin/trips`,
+    users: `${SERVER_ADDRESS}/admin/users`,
+  },
 };

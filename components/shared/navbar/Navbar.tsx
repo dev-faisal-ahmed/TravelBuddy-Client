@@ -26,14 +26,17 @@ export const Navbar = () => {
   return (
     <nav className='sticky top-0 z-20 bg-white shadow-md'>
       <Container className='flex items-center gap-6 py-3'>
-        <MobileMenu />
+        <MobileMenu role={user?.role} />
         <Logo />
-        <div className='ml-auto hidden items-center gap-3 md:flex'>
+        <div className='ml-auto hidden items-center gap-3 lg:flex'>
           {navLinks.map((link) => (
             <ActiveLink key={link.url} {...link} />
           ))}
+          {user?.role === 'ADMIN' && (
+            <ActiveLink title='Dashboard' url={'/admin/trips'} />
+          )}
         </div>
-        <div className='ml-auto md:ml-0'>
+        <div className='ml-auto lg:ml-0'>
           {user ? (
             <ProfileIcon name={user.name} email={user.email} />
           ) : (

@@ -43,3 +43,7 @@ export type TRequestedTrip = {
   address: string;
   status: TTripRequestStatus;
 };
+
+export type TAdminTrip = TTrip & {
+  user: { name: string };
+};

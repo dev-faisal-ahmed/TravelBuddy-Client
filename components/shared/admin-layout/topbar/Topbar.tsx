@@ -16,12 +16,12 @@ export function Topbar({ user }: TProps) {
   const pathName = usePathname();
   return (
     <nav className='flex h-fit items-center justify-between p-6'>
-      <div className='block md:hidden'>
+      <div className='block lg:hidden'>
         <Sheet.Sheet>
           <Sheet.SheetTrigger asChild>
             <MenuIcon className='cursor-pointer' />
           </Sheet.SheetTrigger>
-          <Sheet.SheetContent side={'left'}>
+          <Sheet.SheetContent className='bg-transparent p-0' side={'left'}>
             <Sidebar className='border-none' />
           </Sheet.SheetContent>
         </Sheet.Sheet>

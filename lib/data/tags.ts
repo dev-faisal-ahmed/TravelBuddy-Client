@@ -3,4 +3,5 @@ export const tags = {
   tripDetails: `TRIP_DETAILS`,
   trips: 'TRIPS',
   myTrips: 'MY_TRIPS',
+  adminTrips: 'ADMIN_TRIPS',
 };

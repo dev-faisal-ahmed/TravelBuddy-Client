@@ -18,7 +18,7 @@ export const ChangePassword = () => {
         <h3 className='mb-6 font-semibold text-primary'>Change Password</h3>
         <div className='grid gap-6 sm:grid-cols-2'>
           <PasswordInput
-            containerClass='col-span-2'
+            containerClass='sm:col-span-2'
             {...form.register('oldPassword')}
             error={errors.oldPassword?.message}
             placeholder='Current Password'
