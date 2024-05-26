@@ -11,6 +11,7 @@ export const navLinks = [
 export const profileLinks = [
   { title: 'Trips', url: '/profile' },
   { title: 'Requested Trips', url: '/profile/requested-trips' },
+  { title: 'Join Requests', url: '/profile/join-requests' },
 ];
 
 export const sidebarLinks = [

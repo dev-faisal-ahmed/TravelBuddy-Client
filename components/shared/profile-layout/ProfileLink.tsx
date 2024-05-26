@@ -14,7 +14,7 @@ export const ProfileLink = ({ title, url }: TProps) => {
   return (
     <Link
       className={cn(
-        'px-3 py-2',
+        'truncate whitespace-nowrap px-2 py-2 text-sm sm:px-3 sm:text-base',
         pathName === url && 'border-b-2 font-semibold text-primary',
       )}
       href={url}

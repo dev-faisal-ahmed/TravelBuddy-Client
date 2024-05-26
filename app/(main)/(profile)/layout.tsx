@@ -43,7 +43,7 @@ export default function ProfileLayout({ children }: PropsWithChildren) {
               <EditProfile user={user} />
             </div>
           </div>
-          <div className='mt-4 flex items-center gap-4 border-t border-neutral-300 pt-3'>
+          <div className='mt-4 flex items-center gap-2 border-t border-neutral-300 pt-3 sm:gap-4'>
             {profileLinks.map((link) => (
               <ProfileLink key={link.url} {...link} />
             ))}
