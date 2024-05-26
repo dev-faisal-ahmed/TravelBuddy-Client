@@ -8,17 +8,20 @@ export const useSearch = () => {
   const [endDate, setEndDate] = useState<Date>();
   const [selectedTripType, setSelectedTripType] = useState<string>();
   const destinationRef = useRef<HTMLInputElement>(null);
+  const keyWordRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
   const onTripTypeChange = (tripType: string) => setSelectedTripType(tripType);
 
   const handleSearch = () => {
+    const key = keyWordRef.current?.value.split(' ').join(',');
     const url = makeUrl(
       '/trips',
       removeNonEmptyObject({
         destination: destinationRef?.current?.value,
         startDate: starDate?.toISOString(),
         endDate: endDate?.toISOString(),
+        key: key,
         tripType: selectedTripType,
       }),
     );
@@ -40,6 +43,7 @@ export const useSearch = () => {
     selectedTripType,
     onTripTypeChange,
     destinationRef,
+    keyWordRef,
     handleSearch,
     openModal,
     setOpenModal,
