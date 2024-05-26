@@ -3,8 +3,10 @@ import { Message } from '@/components/shared/Message';
 import { TAdminTrip } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
-import { DeleteTrip } from './DeleteTrip';
+import { DeleteTrip } from './delete-trip';
+import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import Link from 'next/link';
 
 type TProps = {
   trips: TAdminTrip[];
@@ -40,10 +42,7 @@ export const AdminTrips = ({ trips }: TProps) => {
                   Dates
                 </Table.TableHead>
                 <Table.TableHead
-                  className={cn(
-                    tableHeadClass,
-                    'rounded-e-full pr-6 text-right',
-                  )}
+                  className={cn(tableHeadClass, 'rounded-e-full text-center')}
                 >
                   Action
                 </Table.TableHead>
@@ -85,7 +84,12 @@ export const AdminTrips = ({ trips }: TProps) => {
                       Ends : {format(endDate, 'PPP')}
                     </Table.TableCell>
                     <Table.TableCell className='text-right'>
-                      <DeleteTrip />
+                      <div className='flex gap-3'>
+                        <Link href={`/trip/${_id}`}>
+                          <Button>Details</Button>
+                        </Link>
+                        <DeleteTrip tripId={_id} />
+                      </div>
                     </Table.TableCell>
                   </Table.TableRow>
                 ),

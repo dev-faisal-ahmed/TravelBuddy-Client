@@ -25,5 +25,6 @@ export const apiUrl = {
   admin: {
     trips: `${SERVER_ADDRESS}/admin/trips`,
     users: `${SERVER_ADDRESS}/admin/users`,
+    deleteTrip: (tripId: string) => `${SERVER_ADDRESS}/admin/trip/${tripId}`,
   },
 };
