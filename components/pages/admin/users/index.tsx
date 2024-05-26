@@ -3,6 +3,7 @@ import * as Table from '@/components/ui/table';
 import { TUser } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { ChangeRole } from './change-role';
+import { ChangeStatus } from './change-status';
 
 type TProps = {
   users: TUser[];
@@ -71,6 +72,7 @@ export const AdminUsers = ({ users }: TProps) => {
                   <Table.TableCell>
                     <div className='flex justify-center gap-3'>
                       <ChangeRole userId={_id} userRole={role} />
+                      <ChangeStatus userId={_id} userStatus={status} />
                     </div>
                   </Table.TableCell>
                 </Table.TableRow>
