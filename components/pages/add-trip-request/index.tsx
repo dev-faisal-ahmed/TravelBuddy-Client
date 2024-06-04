@@ -7,6 +7,7 @@ import { useAddTripRequest } from './useAddTripRequest';
 import { CustomInput } from '@/components/shared/form/CustomInput';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import { CustomTextArea } from '@/components/shared/form/CustomTextarea';
 
 type TProps = {
   trip: TTrip;
@@ -30,6 +31,7 @@ const isAlreadyRequested = (
 export const AddTripRequest = ({ trip, user, requestedTrips }: TProps) => {
   const { form, onAddTripRequest, agreeRef, loading } = useAddTripRequest(
     trip?._id,
+    user.phone,
   );
 
   const {
@@ -61,13 +63,18 @@ export const AddTripRequest = ({ trip, user, requestedTrips }: TProps) => {
               <CustomInput value={user.name} readOnly label='Name' />
               <CustomInput value={user.email} readOnly label='Email' />
               <CustomInput
-                {...form.register('phone')}
+                containerClassName='sm:col-span-2'
                 type='number'
                 label='Phone'
-                placeholder='Input Your Phone Number'
-                error={errors?.phone?.message}
+                placeholder={
+                  user?.phone ? '' : 'You have not added your phone.'
+                }
+                defaultValue={user.phone}
+                readOnly
               />
-              <CustomInput
+
+              <CustomTextArea
+                className='sm:col-span-2'
                 {...form.register('address')}
                 label='Address'
                 placeholder='Input Your Address'

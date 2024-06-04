@@ -8,6 +8,7 @@ import { tags } from '@/lib/data/tags';
 
 type TPayload = TAddTripFromFields & {
   trip: string;
+  phone: string;
 };
 
 export const addTripRequestAction = async ({

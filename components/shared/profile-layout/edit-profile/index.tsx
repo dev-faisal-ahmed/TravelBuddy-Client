@@ -35,11 +35,19 @@ export const EditProfile = ({ user }: TProps) => {
             placeholder='Name'
             {...form.register('name')}
           />
+
           <CustomInput
             error={errors.email?.message}
             placeholder='Email'
             label={'Email'}
             {...form.register('email')}
+          />
+
+          <CustomInput
+            error={errors.phone?.message}
+            placeholder='Input Phone'
+            label={'Phone'}
+            {...form.register('phone')}
           />
 
           <Button disabled={loading} className='mt-3'>

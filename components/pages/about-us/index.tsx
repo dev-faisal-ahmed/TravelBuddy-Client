@@ -17,7 +17,7 @@ export const AboutUs = () => {
         </Container>
       </section>
       <Container className='pb-12 pt-20'>
-        <div className='flex items-center gap-12'>
+        <div className='flex flex-col items-center gap-12 md:flex-row'>
           <div className='w-full'>
             <Image
               className='h-[550px] w-full rounded-md object-cover object-center'
@@ -55,7 +55,7 @@ export const AboutUs = () => {
       </Container>
       <div className='mt-12 bg-white py-12'>
         <h3 className='mb-12 text-center text-2xl font-semibold text-primary'>
-          Our Heros
+          Our Team
         </h3>
         <div className='flex flex-wrap items-center justify-center gap-12'>
           <TeamCard image='/images/teams/user-1.png' name='Will Smith' />

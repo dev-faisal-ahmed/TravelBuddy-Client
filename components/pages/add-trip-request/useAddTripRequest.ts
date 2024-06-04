@@ -7,10 +7,6 @@ import { addTripRequestAction } from './addTripRequestAction';
 import { useRouter } from 'next/navigation';
 
 const addTripRequestSchema = z.object({
-  phone: z
-    .string({ required_error: 'Phone number is required' })
-    .min(11, { message: 'Min length is 11' }),
-
   address: z
     .string({ required_error: 'User address is required' })
     .min(4, { message: 'Min Length is 4' }),
@@ -18,7 +14,10 @@ const addTripRequestSchema = z.object({
 
 export type TAddTripFromFields = z.infer<typeof addTripRequestSchema>;
 
-export const useAddTripRequest = (tripId: string) => {
+export const useAddTripRequest = (
+  tripId: string,
+  phone: string | undefined,
+) => {
   const form = useForm<TAddTripFromFields>({
     resolver: zodResolver(addTripRequestSchema),
   });
@@ -33,12 +32,15 @@ export const useAddTripRequest = (tripId: string) => {
     try {
       setLoading(true);
 
+      if (!phone)
+        throw new Error('Please add your phone number from your profile page');
+
       if (!agreeRef.current?.checked)
         throw new Error('You have to agree to the terms and condition');
 
       const response = await addTripRequestAction({
         address: data.address,
-        phone: data.phone,
+        phone: phone!,
         trip: tripId,
       });
 

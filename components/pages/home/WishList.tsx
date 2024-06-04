@@ -14,6 +14,7 @@ type TProps = {
 export const WishList = ({ user }: TProps) => {
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!user) return toast.error('Please Login First');
     const form = event.target as HTMLFormElement;
     toast.success('We Have Got Your Request!!');
     form.reset();

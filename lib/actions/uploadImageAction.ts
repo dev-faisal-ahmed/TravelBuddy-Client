@@ -10,6 +10,6 @@ export const uploadImageAction = async (formData: FormData) => {
 
   const imageData = await imageBBResponse.json();
   if (!imageData.success) throw new Error(imageData?.message);
-  console.log(imageData);
+
   return imageData?.data?.url;
 };

@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Travel Buddy
 
-## Getting Started
+## About This Project
 
-First, run the development server:
+<p align="justify">The website is designed to serve as a community-driven platform for sharing and organizing tours. It allows users to create detailed tour itineraries, share their travel plans, and connect with others who are interested in joining their adventures. Whether you are a solo traveler looking for companionship or a seasoned explorer willing to guide others, this platform provides a seamless way to share your travel experiences and build a network of like-minded travelers.</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Users can add trip posts with detailed information, including spot, start date, end date, category, activities, and pictures.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- All users can view all trip posts, including their own, on the trip page.
+  Trip Details and Requests
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- On the detailed trip post page, users can send join requests and update their own posts.
 
-## Learn More
+- Users can edit their profile and change their password.
 
-To learn more about Next.js, take a look at the following resources:
+- Users can view, update, and delete all their added trips.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Users can see detailed views of join requests for their trips and accept or reject these requests.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Users can check the status (accepted or pending) of trips they have requested to join.
 
-## Deploy on Vercel
+- Home Page Search and Filter.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Users can search and filter trips by destination, travel dates, travel type, and keywords in the description.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Technologies
+
+- Next Js
+- Tailwind Css
+- Shad-Cn UI
+- React Hook Form
+- React Route Dom
+
+## Live Site : <a href="https://travel-buddy-client.vercel.app" target="_blank">Click Here</a>
+
+## How To Run Project Locally
+
+- Clone this project.
+- Install necessary packages using using `npm i`.
+- Create a `.env` file, Please check `.env.example` for reference.
+- Now run `npm run dev` to start the project.

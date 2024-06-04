@@ -10,6 +10,6 @@ export const getRequestedTrips = async () => {
   });
 
   const requestedTrips = await response.json();
-  console.log(requestedTrips);
+
   return requestedTrips?.data as TRequestedTrip[];
 };

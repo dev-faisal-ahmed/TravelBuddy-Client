@@ -17,7 +17,6 @@ type TProps = {
 };
 
 export const UpdateTrip = ({ trip, user }: TProps) => {
-  console.log(trip);
   const {
     dates: { startDate, setStartDate, endDate, setEndDate },
     tripTypes: { selectedTripType, onTripTypeChange },

@@ -16,6 +16,6 @@ const getJoinRequests = async () => {
 
 export default async function JoinRequestPage() {
   const joinRequests = await getJoinRequests();
-  console.log(joinRequests);
+
   return <JoinRequest joinRequests={joinRequests} />;
 }

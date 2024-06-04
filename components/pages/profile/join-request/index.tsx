@@ -8,9 +8,6 @@ type TProps = {
 };
 
 export const JoinRequest = ({ joinRequests }: TProps) => {
-  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
-  console.log(joinRequests.length);
-
   return (
     <Container className='py-6'>
       {joinRequests && joinRequests.length ? (

@@ -60,7 +60,9 @@ export const TripDetails = ({ trip, user }: TProps) => {
               <ul className='pl-6 text-sm'>
                 {formateActivities(trip.itinerary).map((activity) => (
                   <Fragment key={activity}>
-                    {activity && <li className='list-disc'>{activity}</li>}
+                    {activity && (
+                      <li className='list-disc'>{activity.trim()}</li>
+                    )}
                   </Fragment>
                 ))}
               </ul>

@@ -15,7 +15,6 @@ export const Pagination = ({ meta, searchParams }: TProps) => {
   const router = useRouter();
 
   const onPageChange = (page: number) => {
-    console.log('working');
     const url = makeUrl('/trips', { ...searchParams, page });
     router.push(url);
   };

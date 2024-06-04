@@ -11,6 +11,10 @@ const editProfileSchema = z.object({
     .string({ required_error: 'Name is required' })
     .min(2, { message: 'Min Length is 2' }),
 
+  phone: z
+    .string({ required_error: 'Phone is required' })
+    .min(11, { message: 'Min Length is 11' }),
+
   email: z
     .string({ required_error: 'Email is required' })
     .email({ message: 'Provide an valid Email' }),
@@ -27,6 +31,7 @@ export const useEditProfile = (user: TLoggedUser) => {
     defaultValues: {
       name: user.name,
       email: user.email,
+      phone: user.phone,
     },
   });
 

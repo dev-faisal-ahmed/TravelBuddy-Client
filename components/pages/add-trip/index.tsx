@@ -57,7 +57,7 @@ export const AddTrip = () => {
           <CustomTextArea
             error={errors.itinerary?.message}
             label='Itinerary'
-            placeholder='Input Itinerary'
+            placeholder='Input all the activities, Use "*" for list view'
             {...form.register('itinerary')}
           />
 
