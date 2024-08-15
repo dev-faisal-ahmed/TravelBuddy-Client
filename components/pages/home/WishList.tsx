@@ -21,7 +21,7 @@ export const WishList = ({ user }: TProps) => {
   };
 
   return (
-    <Container className={'pb-12'}>
+    <Container className={'pb-12 pt-6'}>
       <h3 className='mb-6 text-xl font-semibold '>
         Request To Create New Trips
       </h3>

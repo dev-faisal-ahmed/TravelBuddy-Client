@@ -70,3 +70,5 @@ export type TJoinRequest = {
   address: string;
   status: TTripRequestStatus;
 };
+
+export type TTopRequestTrip = TTrip & { requestedTrips: any[] };

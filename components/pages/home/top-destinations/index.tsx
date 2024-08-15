@@ -4,7 +4,7 @@ import { topDestinations } from '@/lib/data/topDestinations';
 
 export const TopDestinations = () => {
   return (
-    <Container className='pb-12'>
+    <Container className='py-12'>
       <h3 className='text-xl font-semibold'>Top Notch Destinations</h3>
       <div className='mt-6 grid gap-6 md:grid-cols-3'>
         <DestinationCard {...topDestinations[0]} />
