@@ -19,12 +19,22 @@ const loginFormSchema = z.object({
 export type TLoginFormFields = z.infer<typeof loginFormSchema>;
 
 export const useLogin = () => {
+  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState<string>();
+  const [password, setPassword] = useState<string>();
+
   const form = useForm<TLoginFormFields>({
     resolver: zodResolver(loginFormSchema),
+    defaultValues: { email, password },
   });
 
-  const [loading, setLoading] = useState(false);
+  console.log(email, password);
+
   const router = useRouter();
+
+  // handlers
+  const onEmailChange = (value: string) => setEmail(value);
+  const onPasswordChange = (value: string) => setPassword(value);
 
   const onLogin = form.handleSubmit(async (data) => {
     const toastId = toast.loading('Logging in....!');
@@ -44,5 +54,9 @@ export const useLogin = () => {
     }
   });
 
-  return { form, onLogin, loading };
+  return {
+    states: { email, password, loading },
+    handlers: { onLogin, onEmailChange, onPasswordChange },
+    form,
+  };
 };
