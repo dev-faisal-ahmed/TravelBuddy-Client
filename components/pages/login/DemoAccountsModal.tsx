@@ -18,7 +18,7 @@ export const DemoAccountModal = ({
 
   const onAdminSelection = () => {
     setSelected('ADMIN');
-    onEmailChange('admin@travel.buddy');
+    onEmailChange('admin@travel.buddy.com');
     onPasswordChange('1234');
   };
 

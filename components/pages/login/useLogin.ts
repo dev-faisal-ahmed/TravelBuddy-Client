@@ -1,7 +1,7 @@
 import { loginAction } from './loginAction';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
@@ -28,9 +28,14 @@ export const useLogin = () => {
     defaultValues: { email, password },
   });
 
-  console.log(email, password);
-
   const router = useRouter();
+
+  // side effect
+  useEffect(() => {
+    form.setValue('email', email || '');
+    form.setValue('password', password || '');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [email, password]);
 
   // handlers
   const onEmailChange = (value: string) => setEmail(value);

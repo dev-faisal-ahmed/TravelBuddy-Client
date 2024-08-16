@@ -40,10 +40,13 @@ export default function ProfileLayout({ children }: PropsWithChildren) {
                   <MailOpenIcon size={16} />
                   {user.email}
                 </p>
-                <p className='mt-1 flex w-full items-center gap-2 text-neutral-600'>
-                  <PhoneIcon size={16} />
-                  {user.phone}
-                </p>
+
+                {user?.phone && (
+                  <p className='mt-1 flex w-full items-center gap-2 text-neutral-600'>
+                    <PhoneIcon size={16} />
+                    {user.phone}
+                  </p>
+                )}
               </div>
             </div>
             <div className='mx-auto ml-auto mt-auto flex flex-col gap-3 py-3 md:mr-0 md:flex-row'>
