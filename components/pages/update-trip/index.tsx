@@ -32,7 +32,7 @@ export const UpdateTrip = ({ trip, user }: TProps) => {
 
   return (
     <Container className='mx-auto max-w-screen-md py-12'>
-      {trip.user === user._id ? (
+      {trip.user._id === user._id ? (
         <>
           <form onSubmit={onTripUpdate} className='rounded-md border p-6'>
             <h3 className='mb-6 font-semibold text-primary'>
