@@ -38,6 +38,8 @@ export const AddTripRequest = ({ trip, user, requestedTrips }: TProps) => {
     formState: { errors },
   } = form;
 
+  console.log(trip);
+
   return (
     <Container className='py-12'>
       {trip ? (
@@ -98,7 +100,7 @@ export const AddTripRequest = ({ trip, user, requestedTrips }: TProps) => {
               </Button>
             ) : (
               <>
-                {user._id === trip.user ? (
+                {user._id === trip.user._id ? (
                   <Button disabled className='ml-auto mt-3 block'>
                     You are the owner of this trip
                   </Button>

@@ -22,7 +22,7 @@ export default async function AddTripRequestPage({ params }: TProps) {
 
   return (
     <AddTripRequest
-      trip={tripData}
+      trip={tripData.trip}
       user={user}
       requestedTrips={requestedTrips}
     />
