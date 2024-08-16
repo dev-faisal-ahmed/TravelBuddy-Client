@@ -16,5 +16,5 @@ export default async function UpdateTripPage({ params }: TProps) {
 
   const user = jwtDecode(token) as TLoggedUser;
 
-  return <UpdateTrip trip={tripDetails} user={user} />;
+  return <UpdateTrip trip={tripDetails.trip} user={user} />;
 }

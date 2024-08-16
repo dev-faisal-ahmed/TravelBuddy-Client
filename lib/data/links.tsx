@@ -1,4 +1,8 @@
-import { Backpack as BackpackIcon, Users as UsersIcon } from 'lucide-react';
+import {
+  Backpack as BackpackIcon,
+  Users as UsersIcon,
+  LayoutDashboard as LayoutDashboardIcon,
+} from 'lucide-react';
 
 export const navLinks = [
   { title: 'Home', url: '/' },
@@ -15,6 +19,11 @@ export const profileLinks = [
 ];
 
 export const sidebarLinks = [
+  {
+    title: 'Dashboard',
+    url: '/admin/dashboard',
+    icon: <LayoutDashboardIcon size={20} />,
+  },
   {
     title: 'Trips',
     url: '/admin/trips',
