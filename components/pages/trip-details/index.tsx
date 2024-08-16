@@ -3,7 +3,6 @@ import {
   CalendarMinus2 as CalendarMinus2Icon,
   LayoutList as LayoutListIcon,
   MapPin as MapPinIcon,
-  User,
 } from 'lucide-react';
 import Link from 'next/link';
 import { Container } from '@/components/shared/Container';
@@ -14,6 +13,7 @@ import { format } from 'date-fns';
 import { Fragment, PropsWithChildren, use } from 'react';
 import { Button } from '@/components/ui/button';
 import { AddReview } from './add-review';
+import { Reviews } from './reviews';
 
 type TProps = {
   tripDetails: TTripDetails;
@@ -87,6 +87,7 @@ export const TripDetails = ({ tripDetails, user }: TProps) => {
               <Button>Request To Add Trip</Button>
             </Link>
           )}
+          <Reviews user={user} reviews={reviews} />
         </div>
         <div className='h-full w-full'>
           <ImageCarousel images={images} />

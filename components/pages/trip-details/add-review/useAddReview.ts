@@ -7,6 +7,7 @@ import { z } from 'zod';
 import { addReviewAction } from './addReviewAction';
 import { toast } from 'sonner';
 import { TLoggedUser } from '@/lib/types';
+import { useRouter } from 'next/navigation';
 
 const addReviewSchema = z.object({
   details: z.string().min(1, { message: 'Details is required' }),
@@ -17,6 +18,7 @@ type TAddReviewFormFields = z.infer<typeof addReviewSchema>;
 export const useAddReview = (tripId: string, user: TLoggedUser | null) => {
   const [rating, setRating] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const form = useForm<TAddReviewFormFields>({
     resolver: zodResolver(addReviewSchema),
@@ -43,6 +45,7 @@ export const useAddReview = (tripId: string, user: TLoggedUser | null) => {
       if (!response?.ok) throw new Error(response?.message);
       toast.success(response?.message, { id: toastId });
       form.reset();
+      router.refresh();
     } catch (error: any) {
       toast.error(error?.message || 'Something went wrong', { id: toastId });
     } finally {

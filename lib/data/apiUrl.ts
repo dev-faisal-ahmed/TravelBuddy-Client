@@ -26,6 +26,7 @@ export const apiUrl = {
 
   // review
   addReview: `${SERVER_ADDRESS}/review`,
+  deleteReview: (reviewId: string) => `${SERVER_ADDRESS}/review/${reviewId}`,
 
   //trip request
   addTripRequest: `${SERVER_ADDRESS}/trip-request`,
