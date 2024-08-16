@@ -14,5 +14,5 @@ export default async function TripDetailsPage({ params }: TProps) {
 
   const user = token ? (jwtDecode(token) as TLoggedUser) : null;
 
-  return <TripDetails trip={tripData} user={user} />;
+  return <TripDetails tripDetails={tripData} user={user} />;
 }

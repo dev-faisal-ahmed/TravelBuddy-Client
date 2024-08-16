@@ -3,18 +3,20 @@ import {
   CalendarMinus2 as CalendarMinus2Icon,
   LayoutList as LayoutListIcon,
   MapPin as MapPinIcon,
+  User,
 } from 'lucide-react';
+import Link from 'next/link';
 import { Container } from '@/components/shared/Container';
 import { Message } from '@/components/shared/Message';
-import { TLoggedUser, TTrip } from '@/lib/types';
+import { TLoggedUser, TTripDetails } from '@/lib/types';
 import { ImageCarousel } from './ImageCarousel';
 import { format } from 'date-fns';
-import { Fragment, PropsWithChildren } from 'react';
+import { Fragment, PropsWithChildren, use } from 'react';
 import { Button } from '@/components/ui/button';
-import Link from 'next/link';
+import { AddReview } from './add-review';
 
 type TProps = {
-  trip: TTrip;
+  tripDetails: TTripDetails;
   user: TLoggedUser | null;
 };
 
@@ -22,68 +24,75 @@ const formateActivities = (activity: string) => {
   return activity.split('*');
 };
 
-export const TripDetails = ({ trip, user }: TProps) => {
+export const TripDetails = ({ tripDetails, user }: TProps) => {
+  if (!tripDetails || !Object.keys(tripDetails).length)
+    return <Message message='No Trip Found' />;
+
+  const { reviews, trip } = tripDetails;
+  const {
+    _id,
+    images,
+    description,
+    destination,
+    tripType,
+    startDate,
+    endDate,
+    itinerary,
+  } = trip;
+
   return (
     <Container className='py-12'>
-      {trip ? (
-        <div className='flex flex-col gap-12 rounded-md md:gap-24 md:border md:p-16 lg:flex-row'>
-          <div className='h-full w-full'>
-            <ImageCarousel images={trip.images} />
+      <div className='flex flex-col gap-12 rounded-md md:gap-24 md:p-16 lg:flex-row'>
+        <div className='w-full'>
+          <h3 className='flex items-center gap-2 text-xl font-semibold tracking-wider'>
+            <MapPinIcon />
+            {destination}
+          </h3>
+          <p className='mt-3 flex items-center gap-2 capitalize text-neutral-600'>
+            <LayoutListIcon size={18} />
+            Trip Type : {tripType.toLocaleLowerCase()}
+          </p>
+          <div className='mt-5 flex flex-wrap items-center gap-3'>
+            <SmallCard>
+              <CalendarCheckIcon size={16} />
+              Stars : {format(startDate, 'PPP')}
+            </SmallCard>
+            <SmallCard>
+              <CalendarMinus2Icon size={16} />
+              Ends : {format(endDate, 'PPP')}
+            </SmallCard>
           </div>
-          <div className='w-full'>
-            <h3 className='flex items-center gap-2 text-xl font-semibold tracking-wider'>
-              <MapPinIcon />
-              {trip.destination}
-            </h3>
-            <p className='mt-3 flex items-center gap-2 capitalize text-neutral-600'>
-              <LayoutListIcon size={18} />
-              Trip Type : {trip.tripType.toLocaleLowerCase()}
-            </p>
-            <div className='mt-5 flex flex-wrap items-center gap-3'>
-              <SmallCard>
-                <CalendarCheckIcon size={16} />
-                Stars : {format(trip.startDate, 'PPP')}
-              </SmallCard>
-              <SmallCard>
-                <CalendarMinus2Icon size={16} />
-                Ends : {format(trip.endDate, 'PPP')}
-              </SmallCard>
-            </div>
 
-            <p className='mt-6 text-justify'>
-              <span className='font-semibold'>Description : </span>
-              <span className='text-sm'>{trip.description}</span>
-            </p>
+          <p className='mt-6 text-justify'>
+            <span className='font-semibold'>Description : </span>
+            <span className='text-sm'>{description}</span>
+          </p>
 
-            <div className='mt-4'>
-              <p className='font-semibold'>Activities. </p>
-              <ul className='pl-6 text-sm'>
-                {formateActivities(trip.itinerary).map((activity) => (
-                  <Fragment key={activity}>
-                    {activity && (
-                      <li className='list-disc'>{activity.trim()}</li>
-                    )}
-                  </Fragment>
-                ))}
-              </ul>
-            </div>
-            {user?._id === trip.user ? (
-              <Link href={`/trip/update/${trip._id}`}>
-                <Button className='mt-6'>Update Trip</Button>
-              </Link>
-            ) : (
-              <Link
-                className='mt-6 block'
-                href={`/add-trip-request/${trip._id}`}
-              >
-                <Button>Request To Add Trip</Button>
-              </Link>
-            )}
+          <div className='mt-4'>
+            <p className='font-semibold'>Activities. </p>
+            <ul className='pl-6 text-sm'>
+              {formateActivities(itinerary).map((activity) => (
+                <Fragment key={activity}>
+                  {activity && <li className='list-disc'>{activity.trim()}</li>}
+                </Fragment>
+              ))}
+            </ul>
           </div>
+          {user?._id === trip.user._id ? (
+            <Link href={`/trip/update/${_id}`}>
+              <Button className='mt-6'>Update Trip</Button>
+            </Link>
+          ) : (
+            <Link className='mt-6 block' href={`/add-trip-request/${_id}`}>
+              <Button>Request To Add Trip</Button>
+            </Link>
+          )}
         </div>
-      ) : (
-        <Message message='No Trip Found' />
-      )}
+        <div className='h-full w-full'>
+          <ImageCarousel images={images} />
+          <AddReview tripId={_id} user={user} creatorId={trip.user._id} />
+        </div>
+      </div>
     </Container>
   );
 };

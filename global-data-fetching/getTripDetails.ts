@@ -1,6 +1,6 @@
 import { apiUrl } from '@/lib/data/apiUrl';
 import { tags } from '@/lib/data/tags';
-import { TTrip } from '@/lib/types';
+import { TTripDetails } from '@/lib/types';
 
 export const getTripDetails = async (tripId: string) => {
   const response = await fetch(apiUrl.tripDetails(tripId), {
@@ -9,5 +9,6 @@ export const getTripDetails = async (tripId: string) => {
   });
 
   const tripData = await response.json();
-  return tripData?.data as TTrip;
+
+  return tripData?.data as TTripDetails;
 };

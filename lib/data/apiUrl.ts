@@ -24,6 +24,9 @@ export const apiUrl = {
   deleteTrip: (tripId: string) => `${SERVER_ADDRESS}/trip/${tripId}`,
   updateTrip: (tripId: string) => `${SERVER_ADDRESS}/trip/${tripId}`,
 
+  // review
+  addReview: `${SERVER_ADDRESS}/review`,
+
   //trip request
   addTripRequest: `${SERVER_ADDRESS}/trip-request`,
   requestedTrip: `${SERVER_ADDRESS}/trip-request/requested`,
