@@ -6,31 +6,46 @@ import { WishList } from './WishList';
 import { Footer } from './Footer';
 import { UpcomingTrips } from './UpcomingTrips';
 import { TopRequestedTrips } from './TopRequestedTrips';
+import {
+  getTopRequestedTrips,
+  getTrips,
+  getUpcomingTrips,
+} from '@/app/(main)/(home)/data-fetching';
+import { getUser } from '@/lib/actions/getUser';
 
-type TProps = {
-  trips: TTrip[];
-  user: TLoggedUser | null;
-  upcomingTrips: TTrip[];
-  topRequestedTrips: TTopRequestTrip[];
-};
-
-export const Home = async ({
-  trips,
-  user,
-  upcomingTrips,
-  topRequestedTrips,
-}: TProps) => {
+export const Home = async () => {
   return (
     <>
       <section className='bg-primary-100'>
         <Banner />
       </section>
-      <RecentTrips trips={trips} />
-      <UpcomingTrips trips={upcomingTrips} />
-      <TopRequestedTrips trips={topRequestedTrips} />
+      <RecentTripsFetcher />
+      <UpcomingTripsFetcher />
+      <ToRequestedTripFetcher />
       <TopDestinations />
-      <WishList user={user} />
+      <UserFetcher />
       <Footer />
     </>
   );
+};
+
+const RecentTripsFetcher = async () => {
+  const trips = await getTrips();
+  console.log(trips);
+  return <RecentTrips trips={trips} />;
+};
+
+const UpcomingTripsFetcher = async () => {
+  const trips = await getUpcomingTrips();
+  return <UpcomingTrips trips={trips} />;
+};
+
+const UserFetcher = async () => {
+  const user = await getUser();
+  return <WishList user={user} />;
+};
+
+const ToRequestedTripFetcher = async () => {
+  const trips = await getTopRequestedTrips();
+  return <TopRequestedTrips trips={trips} />;
 };

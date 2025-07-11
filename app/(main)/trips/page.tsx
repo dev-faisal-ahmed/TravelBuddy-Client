@@ -17,9 +17,7 @@ const fetchTrips = async (searchParams: Record<string, any>) => {
   return { trips: tripsData?.data as TTrip[], meta: tripsData?.meta as TMeta };
 };
 
-type TProps = {
-  searchParams: Record<string, any>;
-};
+type TProps = { searchParams: Record<string, any> };
 
 export default async function TripsPage({ searchParams }: TProps) {
   const { trips, meta } = await fetchTrips(searchParams);
