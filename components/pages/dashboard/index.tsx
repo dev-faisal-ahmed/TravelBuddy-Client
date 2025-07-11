@@ -1,5 +1,4 @@
 import { Chart } from '@/components/shared/Chart';
-import { ChartConfig } from '@/components/ui/chart';
 import { TAdminTrip } from '@/lib/types';
 import { AdminTrips } from '../admin/trips';
 
@@ -41,23 +40,13 @@ export const Dashboard = ({ trips }: TProps) => {
         <Chart
           title='Trips'
           description='All the trips since last 6 months'
-          chartConfig={{
-            value: {
-              label: 'Trip',
-              color: '#098637',
-            },
-          }}
+          chartConfig={{ value: { label: 'Trip', color: '#098637' } }}
           chartData={chartDataForTrips}
         />
         <Chart
           title='Trip Requests'
           description='All the trips since last 6 months'
-          chartConfig={{
-            value: {
-              label: 'Trip Request',
-              color: '#098637',
-            },
-          }}
+          chartConfig={{ value: { label: 'Trip Request', color: '#098637' } }}
           chartData={chartDataForTripRequest}
           fillColor='#0f3f39'
         />
@@ -65,12 +54,7 @@ export const Dashboard = ({ trips }: TProps) => {
         <Chart
           title='Users'
           description='User joined since last 6 months'
-          chartConfig={{
-            value: {
-              label: 'Users',
-              color: '#098637',
-            },
-          }}
+          chartConfig={{ value: { label: 'Users', color: '#098637' } }}
           chartData={chartDataForUser}
           fillColor='#4b847c'
         />
@@ -78,7 +62,7 @@ export const Dashboard = ({ trips }: TProps) => {
       {/* lates trips */}
       <div className='mt-12'>
         <h3 className='text-lg font-semibold'>Latest Trips.</h3>
-        <AdminTrips trips={trips.slice(10)} />
+        <AdminTrips trips={trips?.slice(10)} />
       </div>
     </main>
   );

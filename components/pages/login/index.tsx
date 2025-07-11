@@ -12,8 +12,8 @@ export const Login = () => {
           <Image
             className='h-full w-full'
             src={'/images/auth-banner.png'}
-            height={500}
-            width={500}
+            height={400}
+            width={400}
             alt='banner'
           />
         </div>
